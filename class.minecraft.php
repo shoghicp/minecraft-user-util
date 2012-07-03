@@ -27,7 +27,7 @@ class minecraft {
         curl_close($request);
     }
 
-    public function signin($username, $password, $version) {
+    public function signin($username, $password, $version=12) {
         $parameters = array('user' => $username, 'password' => $password, 'version' => $version);
         $request = $this->request('https://login.minecraft.net/', $parameters);
         $response = explode(':', $request);
