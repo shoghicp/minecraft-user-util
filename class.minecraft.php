@@ -1,24 +1,18 @@
 <?php
 
-    /*
-     * @product: Minecraft Class
-     * @description: Intergrate Minecraft within your own projects.
-     * @author: Nathaniel Blackburn
-     * @version: 1.9.1
-     * @license: http://creativecommons.org/licenses/by/3.0/legalcode
-     * @support: support@nblackburn.co.uk
-     * @website: http://www.nblackburn.co.uk
-    */
+/*
+ * @product: Minecraft Class
+ * @description: Intergrate Minecraft within your own projects.
+ * @author: Nathaniel Blackburn
+ * @version: 1.9.2
+ * @license: http://creativecommons.org/licenses/by/3.0/legalcode
+ * @support: support@nblackburn.co.uk
+ * @website: http://www.nblackburn.co.uk
+*/
 
 class minecraft {
 
     public $account;
-
-    function __construct($username=null, $password=null, $username=12) {
-        if ($username != null && $password != null) {
-            return $this->login($username, $password, $version);
-        }
-    }
 
     private function request($website, $parameters=null) {
         $request = curl_init();
