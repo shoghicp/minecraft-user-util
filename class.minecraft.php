@@ -4,17 +4,23 @@
      * @product: Minecraft Class
      * @description: Intergrate Minecraft within your own projects.
      * @author: Nathaniel Blackburn
-     * @version: 1.9
+     * @version: 1.9.1
      * @license: http://creativecommons.org/licenses/by/3.0/legalcode
-     * @support: support@nblackburn.me
-     * @website: http://www.nblackburn.me
+     * @support: support@nblackburn.co.uk
+     * @website: http://www.nblackburn.co.uk
     */
 
 class minecraft {
 
     public $account;
 
-    private function request($website, array $parameters) {
+    function __construct($username=null, $password=null, $username=12) {
+        if ($username != null && $password != null) {
+            return $this->login($username, $password, $version);
+        }
+    }
+
+    private function request($website, $parameters=null) {
         $request = curl_init();
         curl_setopt($request, CURLOPT_HEADER, 0);
         curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
@@ -95,7 +101,7 @@ class minecraft {
             if ($render_type == 'head') {
                 header('Content-Type: image/png');
                 $canvas = imagecreatetruecolor($size, $size);
-                $image = imagecreatefrompng($this->get_skin($username));
+                $image = imagecreatefromstring($this->request($this->get_skin($username)));
                 imagecopyresampled($canvas, $image, 0, 0, 8, 8, $size, $size, 8, 8);
                 return imagepng($canvas);
             } else if($render_type == 'body') {
